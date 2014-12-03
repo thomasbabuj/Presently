@@ -17,7 +17,9 @@ expressions
 <body>
 	<div class="container">
 		<div ng-controller="MainCtrl">
-			{{ date.raw }}
+			<div id="datetime">
+				<h1>{{ date.raw  | date: 'hh mm ss' }}</h1>
+			</div>
 		</div>
 	</div>
 	<script src="./js/vendor/angular.js"></script>
