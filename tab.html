@@ -1,4 +1,11 @@
 <!doctype html>
+<!--
+
+Using ng-csp directive to enable Content security policy 
+Chrome apps prevents browser from using eval or function(string)
+generated functions. So using ng-csp will cause angular to evaluate 
+expressions
+-->
 <html data-ng-app="myApp" data-ng-csp="">
 <head>
 	<meta charset="UTF-8">
