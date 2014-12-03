@@ -5,8 +5,7 @@ angular.module('myApp', [])
 
 		// Update function
 		var updateTime = function() {
-			$scope.date.raw = new Date();
-			$timeout(updateTime, 1000);
+			$scope.date.raw = new Date(); $timeout(updateTime, 1000);
 		}
 
 		// Kick off the update function
