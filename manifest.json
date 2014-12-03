@@ -3,7 +3,7 @@
     "name" : "Presently",
     "description" : "A currently clone",
     "version" : "0.1",
-    "permission" : [
+    "permissions" : [
         "http://api.wunderground.com/api/",
         "http://api.autocomplete.wunderground.com/api"
     ],
