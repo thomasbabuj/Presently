@@ -40,6 +40,17 @@ angular.module('myApp', [ngRoute])
 	.config(function(WeatherProvider){
 		WeatherProvider.setApiKey('80c081fda40c2009');
 	})
+	.config(function($routeProvider){
+		.when('/', {
+			templateUrl : 'templates/home.html',
+			controller : 'MainCtrl'
+		})
+		.when('/settings', {
+			templateUrl : 'templates/settings.html'
+			controller : 'MainCtrl'
+		})
+		.otherwise({ redirectTo:'/' });
+	})
 	.controller('MainCtrl', function($scope, $timeout, Weather) {
 		// Build date object
 		$scope.date = {};
