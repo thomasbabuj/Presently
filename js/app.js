@@ -35,6 +35,17 @@ angular.module('myApp', ['ngRoute'])
 			}
 		}
 	})
+	.factory('UserService', function(){
+		var defaults = {
+			location : 'autoip'
+		};
+
+		var service = {
+			user : defaults
+		};
+
+		return service;
+	})
 	.config(function(WeatherProvider){
 		WeatherProvider.setApiKey('80c081fda40c2009');
 	})
@@ -70,5 +81,5 @@ angular.module('myApp', ['ngRoute'])
 		updateTime();
 	})
 	.controller('SettingsCtrl', function($scope){
-		
+
 	});
