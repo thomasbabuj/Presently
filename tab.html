@@ -10,14 +10,20 @@ expressions
 <head>
 	<meta charset="UTF-8">
 	<title>Presently</title>
-	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/angular-csp.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">		
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
 	<div class="container">
 		<div ng-view></div>
+		<div id="actionbar">
+			<ul class="list-inline">
+				<li><a class="glyphicon glyphicon-home" href="#/"></a></li>
+				<li><a class="glyphicon glyphicon-cog" href="#/settings"></a></li>
+			</ul>
+		</div>
 	</div>
 	<script src="./js/vendor/angular.min.js"></script>
 	<script src="./js/vendor/angular-route.min.js"></script>
