@@ -49,7 +49,7 @@ angular.module('myApp', [])
 		// Getting San Francisco for now
 		Weather.getWeatherForecast("Singapore/Singapore")
 		.then(function(data){
-			$scope.weather.forcast = data;
+			$scope.weather.forecast = data;
 		});
 
 		// Update function
