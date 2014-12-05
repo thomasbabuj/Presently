@@ -58,7 +58,7 @@ angular.module('myApp', ['ngRoute'])
 		//Immediately call restore from the session storage 
 		// so we have our user data available immediately
 		service.restore();
-		
+
 		return service;
 	})
 	.config(function(WeatherProvider){
@@ -95,6 +95,6 @@ angular.module('myApp', ['ngRoute'])
 		// Kick off the update function
 		updateTime();
 	})
-	.controller('SettingsCtrl', function($scope){
-
+	.controller('SettingsCtrl', function($scope, UserService){
+		$scope.user = UserService.user;
 	});
