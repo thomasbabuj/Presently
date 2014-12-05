@@ -17,6 +17,7 @@ angular.module('myApp', [])
 			return {
 				// Service object
 				getWeatherForecast : function(city) {
+					console.log (city );
 					var d = $q.defer();
 					$http({
 						method: 'GET',
@@ -38,9 +39,17 @@ angular.module('myApp', [])
 	.config(function(WeatherProvider){
 		WeatherProvider.setApiKey('80c081fda40c2009');
 	})
-	.controller('MainCtrl', function($scope, $timeout) {
+	.controller('MainCtrl', function($scope, $timeout, Weather) {
 		// Build date object
 		$scope.date = {};
+
+		$scope.weather = {};
+
+		// Getting San Francisco for now
+		Weather.getWeatherForecast("CA/San_Francisco")
+		.then(function(data){
+			$scope.weather.forcast = data;
+		});
 
 		// Update function
 		var updateTime = function() {
