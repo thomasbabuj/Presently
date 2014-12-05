@@ -1,4 +1,4 @@
-angular.module('myApp', [ngRoute])
+angular.module('myApp', ['ngRoute'])
 
 	.provider('Weather', function() {
 		var apiKey = '';
@@ -41,12 +41,12 @@ angular.module('myApp', [ngRoute])
 		WeatherProvider.setApiKey('80c081fda40c2009');
 	})
 	.config(function($routeProvider){
-		.when('/', {
+		$routeProvider.when('/', {
 			templateUrl : 'templates/home.html',
 			controller : 'MainCtrl'
 		})
 		.when('/settings', {
-			templateUrl : 'templates/settings.html'
+			templateUrl : 'templates/settings.html',
 			controller : 'MainCtrl'
 		})
 		.otherwise({ redirectTo:'/' });
