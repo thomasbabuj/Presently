@@ -16,15 +16,13 @@ angular.module('myApp', ['ngRoute'])
 			var self = this;
 			return {
 				// Service object
-				getWeatherForecast : function(city) {
-					console.log (city );
+				getWeatherForecast : function(city) {					
 					var d = $q.defer();
 					$http({
 						method: 'GET',
 						url : self.getUrl("forecast", city),
 						cache : true
-					}).success(function(data) {
-						console.log ( data.forecast.simpleforecast );
+					}).success(function(data) {						
 						// The wunderground API returns the 
 						// object that nests the forecasts inside 
 						// the forecast.simpleforecast key
@@ -70,4 +68,7 @@ angular.module('myApp', ['ngRoute'])
 
 		// Kick off the update function
 		updateTime();
+	})
+	.controller('SettingsCtrl', function($scope){
+		
 	});
