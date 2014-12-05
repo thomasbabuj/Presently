@@ -1,3 +1,7 @@
+body {
+	background-color: #f48992;
+	color: #fff;
+}
 
 #datetime {
 	text-align: center;
@@ -22,4 +26,15 @@
 
 #forcast ul li .today h3 {
 	font-size : 1.8em;
+}
+
+#actionbar {
+	position: absolute;
+	bottom: 0.5em;
+	right: 1.0em;
+}
+
+#actionbar a {
+	font-size: 2.2rem;
+	color: #000;
 }
