@@ -41,9 +41,24 @@ angular.module('myApp', ['ngRoute'])
 		};
 
 		var service = {
-			user : defaults
+			user : {},
+			save : function() {
+				sessionStorage.presently =
+					angular.toJson(service.user);
+			},
+			restore : function() {
+				// Pull from sessionStorage
+				service.user = 
+					angular.fromJson(sessionStorage.presently ) || defaults
+
+				return service.user;	
+			}
 		};
 
+		//Immediately call restore from the session storage 
+		// so we have our user data available immediately
+		service.restore();
+		
 		return service;
 	})
 	.config(function(WeatherProvider){
