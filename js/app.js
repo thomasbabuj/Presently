@@ -1,4 +1,4 @@
-angular.module('myApp', [])
+angular.module('myApp', [ngRoute])
 
 	.provider('Weather', function() {
 		var apiKey = '';
