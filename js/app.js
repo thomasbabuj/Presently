@@ -73,14 +73,15 @@ angular.module('myApp', ['ngRoute'])
 		})
 		.otherwise({ redirectTo:'/' });
 	})
-	.controller('MainCtrl', function($scope, $timeout, Weather) {
+	.controller('MainCtrl', function($scope, $timeout, Weather, UserService) {
 		// Build date object
 		$scope.date = {};
 
 		$scope.weather = {};
 
-		// Getting San Francisco for now
-		Weather.getWeatherForecast("Singapore/Singapore")
+		$scope.user = UserService.user;
+		
+		Weather.getWeatherForecast( $scope.user.location )
 		.then(function(data){
 			$scope.weather.forecast = data;
 		});
