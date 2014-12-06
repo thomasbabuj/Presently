@@ -39,7 +39,7 @@ angular.module('myApp', ['ngRoute'])
 		var defaults = {
 			location : 'autoip'
 		};
-
+		
 		var service = {
 			user : {},
 			save : function() {
@@ -47,10 +47,8 @@ angular.module('myApp', ['ngRoute'])
 					angular.toJson(service.user);
 			},
 			restore : function() {
-				// Pull from sessionStorage
-				service.user = 
-					angular.fromJson(sessionStorage.presently ) || defaults
-
+				// Pull from sessionStorage				
+				service.user = angular.fromJson(sessionStorage.presently ) || defaults;			
 				return service.user;	
 			}
 		};
@@ -71,7 +69,7 @@ angular.module('myApp', ['ngRoute'])
 		})
 		.when('/settings', {
 			templateUrl : 'templates/settings.html',
-			controller : 'MainCtrl'
+			controller : 'SettingsCtrl'
 		})
 		.otherwise({ redirectTo:'/' });
 	})
@@ -95,6 +93,10 @@ angular.module('myApp', ['ngRoute'])
 		// Kick off the update function
 		updateTime();
 	})
-	.controller('SettingsCtrl', function($scope, UserService){
+	.controller('SettingsCtrl', function($scope, UserService){	
 		$scope.user = UserService.user;
+
+		$scope.save = function() {
+			UserService.save();
+		}
 	});
