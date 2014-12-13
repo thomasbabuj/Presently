@@ -110,6 +110,36 @@ angular.module('myApp', ['ngRoute'])
 
 				return function(scope, ele, attrs, ctrl) {
 
+					var minKeyCount = attrs.minKeyCount || 3,
+					timer,
+					input = ele.find('input');
+
+					input.bind('keyup', function(e) {
+						val = ele.val();
+						if( val.length < minKeyCount ) {
+							if ( timer ) $timeout.cancel( timer );
+							scope.result = null;
+							return;
+						} else {
+							if ( timer ) $timeout.cancel ( timer );
+							timer = $timeout(function(){
+								scope.autoFill()(val)
+								.then(function(data) {
+									if ( data && data.lengh > 0) {
+										scope.reslist = data;
+										scope.ngModel = data[0].zmw;
+									}
+								});
+							}, 300);
+						}
+					});
+
+					// Hide the result on blur
+					input.bind('blur', function(e) {
+						scope.reslit = null;
+						scope.$digest();
+					})
+
 				}
 			}
 		}
