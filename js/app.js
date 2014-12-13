@@ -74,11 +74,28 @@ angular.module('myApp', ['ngRoute'])
 		.otherwise({ redirectTo:'/' });
 	})
 	.directive('autoFill', function($timeout) {
+		console.log ('in autofill');
 		return  {
 			restrict : 'EA',
 			scope : {
 				autoFill : '&',
 				ngModel : '='
+			},
+			compile : function(tEle, tAttrs) {
+				var tplEl = angular.element('<div class="typeahead">' +
+					'<input type="text" autocomplete="off" />' +
+					'<ul id="autolist" ng-show="reslist">' +
+					'<li ng-repeat="res in reslist"' + '>{{res.name}}' +
+					'</ul>' +
+					'</div>');
+				var input = tplEl.find('input');
+				input.attr('type', tAttrs.type);
+				input.attr('ng-model', tAttrs.ngModel);
+				tEle.replaceWith(tplEl);
+
+				return function(scope, ele, attrs, ctrl) {
+
+				}
 			}
 		}
 	})
