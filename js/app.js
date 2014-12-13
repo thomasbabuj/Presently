@@ -34,6 +34,7 @@ angular.module('myApp', ['ngRoute'])
 				},
 
 				getCityDetails : function(query) {
+					console.log ( query );
 					var d = $q.defer();
 					$http({
 						method : 'GET',
@@ -134,8 +135,12 @@ angular.module('myApp', ['ngRoute'])
 		// Kick off the update function
 		updateTime();
 	})
-	.controller('SettingsCtrl', function($scope, UserService){	
+	.controller('SettingsCtrl', function($scope, UserService, Weather){	
 		$scope.user = UserService.user;
+
+		$scope.fetchCities = Weather.getCityDetails;
+
+		console.log ($scope.fetchCities);
 
 		$scope.save = function() {
 			UserService.save();
