@@ -38,8 +38,7 @@ angular.module('myApp', ['ngRoute'])
 					var d = $q.defer();
 					$http({
 						method : 'GET',
-						url : 'http://autocomplete.wunderground.com' +
-								'aq?query="' + query 
+						 url: "http://autocomplete.wunderground.com/aq?query=" +query                				
 					}).success(function(data) {
 						d.reslove(data.RESULTS);
 					}).error(function(err) {
