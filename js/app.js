@@ -33,14 +33,13 @@ angular.module('myApp', ['ngRoute'])
 					return d.promise;
 				},
 
-				getCityDetails : function(query) {
-					console.log ( query );
+				getCityDetails : function(query) {					
 					var d = $q.defer();
 					$http({
 						method : 'GET',
 						 url: "http://autocomplete.wunderground.com/aq?query=" +query                				
-					}).success(function(data) {
-						d.reslove(data.RESULTS);
+					}).success(function(data) {												
+						d.resolve(data.RESULTS);
 					}).error(function(err) {
 						d.reject(err);
 					});
@@ -168,9 +167,7 @@ angular.module('myApp', ['ngRoute'])
 		$scope.user = UserService.user;
 
 		$scope.fetchCities = Weather.getCityDetails;
-
-		console.log ($scope.fetchCities);
-
+		
 		$scope.save = function() {
 			UserService.save();
 		}
