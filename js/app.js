@@ -31,6 +31,20 @@ angular.module('myApp', ['ngRoute'])
 						d.reject(err);
 					});
 					return d.promise;
+				},
+
+				getCityDetails : function(query) {
+					var d = $q.defer();
+					$http({
+						method : 'GET',
+						url : 'http://autocomplete.wunderground.com' +
+								'aq?query="' + query 
+					}).success(function(data) {
+						d.reslove(data.RESULTS);
+					}).error(function(err) {
+						d.reject(err);
+					});
+					return d.promise;
 				}
 			}
 		}
