@@ -73,6 +73,15 @@ angular.module('myApp', ['ngRoute'])
 		})
 		.otherwise({ redirectTo:'/' });
 	})
+	.directive('autoFill', function($timeout) {
+		return  {
+			restrict : 'EA',
+			scope : {
+				autoFill : '&',
+				ngModel : '='
+			}
+		}
+	})
 	.controller('MainCtrl', function($scope, $timeout, Weather, UserService) {
 		// Build date object
 		$scope.date = {};
