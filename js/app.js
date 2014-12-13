@@ -103,7 +103,7 @@ angular.module('myApp', ['ngRoute'])
 					'</div>');
 				var input = tplEl.find('input');
 				input.attr('type', tAttrs.type);
-				input.attr('ng-model', tAttrs.ngModel);
+				input.attr('ng-model', tAttrs.ngModel);							
 				tEle.replaceWith(tplEl);
 
 				return function(scope, ele, attrs, ctrl) {
@@ -112,19 +112,21 @@ angular.module('myApp', ['ngRoute'])
 					timer,
 					input = ele.find('input');
 
-					input.bind('keyup', function(e) {
+					ele.bind('keyup', function(e) {						
 						val = ele.val();
 						if( val.length < minKeyCount ) {
 							if ( timer ) $timeout.cancel( timer );
-							scope.result = null;
+							scope.reslist = null;
 							return;
 						} else {
+							console.log (" in elese");
 							if ( timer ) $timeout.cancel ( timer );
 							timer = $timeout(function(){
 								scope.autoFill()(val)
-								.then(function(data) {
-									if ( data && data.lengh > 0) {
-										scope.reslist = data;
+								.then(function(data) {									
+									if ( data && data.length > 0) {
+										scope.reslist = data;		
+										console.log ( data ); 																		
 										scope.ngModel = data[0].zmw;
 									}
 								});
@@ -134,7 +136,7 @@ angular.module('myApp', ['ngRoute'])
 
 					// Hide the result on blur
 					input.bind('blur', function(e) {
-						scope.reslit = null;
+						scope.reslist = null;
 						scope.$digest();
 					})
 

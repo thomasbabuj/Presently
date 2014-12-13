@@ -8,3 +8,9 @@
 	<input class="btn btn-primary" 
 		type="submit" value="Save" />
 </form>
+
+<h1>Result : {{ reslist }}</h1>
+
+<ul>
+	<li ng-repeat="res in reslist">{{res.name}}</li>
+</ul>
