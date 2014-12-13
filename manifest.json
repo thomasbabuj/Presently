@@ -4,8 +4,8 @@
     "description" : "A currently clone",
     "version" : "0.1",
     "permissions" : [
-        "http://api.wunderground.com/api/",
-        "http://api.autocomplete.wunderground.com/api"
+        "http://api.wunderground.com/api/",    
+        "http://autocomplete.wunderground.com/"
     ],
     "background" : {
         "scripts" : ["js/vendor/angular.min.js"]
